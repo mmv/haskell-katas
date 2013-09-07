@@ -42,3 +42,19 @@ largestPrimeOf n =
 
 problem3 () = largestPrimeOf 600851475143
 
+-- problem 4
+-- largest palindrome (same read both ways)
+largestPalindrome (products) =
+    maximum (filter isPalindrome sx)
+    where
+        decompose n =
+            let (q,r) = divMod n 10
+            in
+                r : if q == 0 then [] else decompose q
+        isPalindrome n =
+            (decompose n) == (reverse (decompose n))
+            where
+
+-- we want the largest palindrome created by product of two 3-digit ints
+problem4 () = largestPalindrome [ x*y | x <- [ 100..999 ], y <- [ 100..999 ], x >= y ]
+
