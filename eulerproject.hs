@@ -12,3 +12,17 @@ sumMultiplesOf3or5Below n =
 
 problem1 () = sumMultiplesOf3or5Below 1000
 
+-- problem 2:
+-- sum of fib even numbers below 4M
+
+sumFibEvensBelow n =
+    sum (takeWhile
+            (\x -> x < n)
+            (filter (\x -> even x) fibs))
+    where
+        fibseq p1 p2 = p1 : fibseq p2 (p1+p2)
+        fibs = fibseq 1 2
+
+problem2 () = sumFibEvensBelow 4000000
+
+
