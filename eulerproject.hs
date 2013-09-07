@@ -58,3 +58,18 @@ largestPalindrome (products) =
 -- we want the largest palindrome created by product of two 3-digit ints
 problem4 () = largestPalindrome [ x*y | x <- [ 100..999 ], y <- [ 100..999 ], x >= y ]
 
+-- problem 5
+-- smallest number evenly divisible for all integers up to X
+smallestDivisibleForAllUpTo n =
+    product (primify [ 2..n ])
+    where
+        divisibleBy x y = (mod x y) == 0
+        primify [] = []
+        primify (x:xs) = x : primify (map
+                                        (\a -> if (divisibleBy a x)
+                                               then (div a x)
+                                               else a)
+                                        xs)
+
+problem5 () = smallestDivisibleForAllUpTo 20
+
