@@ -25,4 +25,20 @@ sumFibEvensBelow n =
 
 problem2 () = sumFibEvensBelow 4000000
 
+-- problem 3:
+-- largest prime factor of ...
+
+largestPrimeOf n =
+    factor n 2
+    where
+        divisibleBy x y = (mod x y) == 0
+        factor n k =
+            if k > (div n 2)
+            then n
+            else
+                if divisibleBy n k
+                then factor (div n k) k
+                else factor n (k+1)
+
+problem3 () = largestPrimeOf 600851475143
 
