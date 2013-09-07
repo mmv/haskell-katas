@@ -73,3 +73,7 @@ smallestDivisibleForAllUpTo n =
 
 problem5 () = smallestDivisibleForAllUpTo 20
 
+-- problem 6
+-- difference between sum of squares and square of sums
+problem6 () = sum([1..100])^2 - sum([ x*x | x <- [1..100] ])
+
