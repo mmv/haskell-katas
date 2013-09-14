@@ -77,3 +77,19 @@ problem5 () = smallestDivisibleForAllUpTo 20
 -- difference between sum of squares and square of sums
 problem6 () = sum([1..100])^2 - sum([ x*x | x <- [1..100] ])
 
+-- problem 7
+-- 10 001 st prime
+
+primes =
+    2 : nextPrimes 3
+    where
+        isPrime n = all (\x -> (mod n x) > 0) (takeWhile (< (div n 2)) primes)
+        nextPrimes n =
+            if isPrime n
+            then n : nextPrimes (n + 2)
+            else     nextPrimes (n + 2)
+
+problem7 () = primes !! 10000 -- 0-based, so we're getting the 10001
+
+
+
