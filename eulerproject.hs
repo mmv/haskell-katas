@@ -1,5 +1,6 @@
 -- solutions for Euler Project problems
 --
+import Data.Char
 
 -- problem 1:
 -- multiples of 3 or 5
@@ -91,5 +92,19 @@ primes =
 
 problem7 () = primes !! 10000 -- 0-based, so we're getting the 10001
 
+-- problem 8
+-- greatest product for 5 consecutive digits
 
 
+greatestProductOfXConsecutive numdigits digits =
+    foldl max 0 (map (foldl (*) 1) (splitSeq digits numdigits))
+    where
+        splitSeq [] len = []
+        splitSeq sx len =
+            (take len sx) : splitSeq (tail sx) len
+
+problem8 () = do
+    contents <- readFile "inputs/problem8.txt"
+    let fullstr = (concat (lines contents))
+    let asdigits = (map digitToInt fullstr)
+    return (greatestProductOfXConsecutive 5 asdigits)
