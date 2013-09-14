@@ -45,7 +45,7 @@ problem3 () = largestPrimeOf 600851475143
 -- problem 4
 -- largest palindrome (same read both ways)
 largestPalindrome (products) =
-    maximum (filter isPalindrome sx)
+    maximum (filter isPalindrome products)
     where
         decompose n =
             let (q,r) = divMod n 10
